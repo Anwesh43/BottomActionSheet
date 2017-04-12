@@ -54,6 +54,9 @@ public class ActionSheetElement {
         if(scale>=1) {
             dir = 0;
             scale = 0;
+            if(onElementClickListener!=null) {
+                onElementClickListener.onElementClick();
+            }
         }
     }
     public boolean stop() {
