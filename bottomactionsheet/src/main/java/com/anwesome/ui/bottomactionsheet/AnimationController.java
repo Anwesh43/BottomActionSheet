@@ -47,6 +47,7 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
             actionButton.setRotation(180*(1-animator.getAnimatedFraction()));
         }
         bottomActionSheetView.setY((float)animator.getAnimatedValue());
+        actionButton.setY((float)animator.getAnimatedValue()-h/12);
 
     }
     public void onAnimationEnd(Animator animator) {

@@ -55,7 +55,7 @@ public class ActionSheetElement {
     }
     public void update() {
         scale+=dir*0.2f;
-        if(scale>=1.2F) {
+        if(scale>=1.4F) {
             dir = 0;
             scale = 0;
             if(onElementClickListener!=null) {

@@ -38,7 +38,7 @@ public class ActionSheet {
             Point size = new Point();
             display.getRealSize(size);
             w = size.x;
-            h= size.y*9/10;
+            h= (size.y*9)/10;
             int hBottom = (h/12)*elements.size();
             overlayView = new OverlayView(activity);
             overlayView.setVisibility(View.INVISIBLE);
@@ -50,7 +50,7 @@ public class ActionSheet {
             activity.addContentView(bottomActionSheetView,new ViewGroup.LayoutParams(w,hBottom));
             actionButton = new ActionButton(activity);
             actionButton.setX(w/2-w/20);
-            actionButton.setY(9*h/10-w/20);
+            actionButton.setY(19*h/20-h/12);
             activity.addContentView(actionButton,new ViewGroup.LayoutParams(w/10,w/10));
 
             animationController = new AnimationController(bottomActionSheetView,actionButton,overlayView,19*h/20);
