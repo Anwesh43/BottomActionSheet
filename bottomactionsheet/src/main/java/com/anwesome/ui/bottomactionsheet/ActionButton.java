@@ -31,7 +31,7 @@ public class ActionButton extends View {
         this.onClickListener = onClickListener;
     }
     public boolean onTouchEvent(MotionEvent event) {
-        if(onClickListener!=null) {
+        if(onClickListener!=null && event.getAction() == MotionEvent.ACTION_DOWN) {
             onClickListener.onClick(this);
         }
         return true;

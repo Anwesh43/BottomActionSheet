@@ -21,7 +21,7 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
     }
     private void open() {
         if(openAnimator == null) {
-            openAnimator = ValueAnimator.ofFloat(h, h - bottomActionSheetView.getMeasuredHeight());
+            openAnimator = ValueAnimator.ofFloat(h+bottomActionSheetView.getMeasuredHeight()/12, h - bottomActionSheetView.getMeasuredHeight());
             openAnimator.setDuration(500);
             openAnimator.addUpdateListener(this);
             openAnimator.addListener(this);
@@ -31,7 +31,7 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
     }
     private void close() {
         if(closeAnimator == null) {
-            closeAnimator = ValueAnimator.ofFloat( h - bottomActionSheetView.getMeasuredHeight(),h);
+            closeAnimator = ValueAnimator.ofFloat( h - bottomActionSheetView.getMeasuredHeight(),h+bottomActionSheetView.getMeasuredHeight()/12);
             closeAnimator.setDuration(500);
             closeAnimator.addUpdateListener(this);
             closeAnimator.addListener(this);
