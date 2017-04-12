@@ -11,8 +11,10 @@ import android.graphics.RectF;
 public class ActionSheetElement {
     private String option;
     private float x,y,w,h,scale = 0,dir = 0;
-    public ActionSheetElement(String option) {
+    private OnElementClickListener onElementClickListener;
+    public ActionSheetElement(String option,OnElementClickListener onElementClickListener) {
         this.option = option;
+        this.onElementClickListener = onElementClickListener;
     }
     public void setDimension(float x,float y,float w,float h) {
         this.x = x;
@@ -59,5 +61,15 @@ public class ActionSheetElement {
     }
     public int hashCode() {
         return option.hashCode()+(int)(x+y+w+h+scale+dir);
+    }
+    public interface OnElementClickListener {
+        void onElementClick();
+    }
+    public boolean handleTap(float x,float y) {
+        boolean condition = x>=this.x && x<=this.x+w && y>=this.y && y<=this.y+h && dir == 0;
+        if(condition) {
+            dir = 1;
+        }
+        return condition;
     }
 }
