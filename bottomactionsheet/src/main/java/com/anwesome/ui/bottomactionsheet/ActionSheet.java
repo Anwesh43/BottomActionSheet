@@ -40,6 +40,7 @@ public class ActionSheet {
             w = size.x;
             h= size.y;
             int hBottom = (h/25)*elements.size();
+            activity.addContentView(overlayView,new ViewGroup.LayoutParams(w,h));
             bottomActionSheetView = new BottomActionSheetView(activity);
             bottomActionSheetView.setActionSheetElementList(elements);
             bottomActionSheetView.setY(h-hBottom);
@@ -50,7 +51,6 @@ public class ActionSheet {
             actionButton.setY(19*h/20-w/20);
             activity.addContentView(actionButton,new ViewGroup.LayoutParams(w/10,w/10));
             overlayView = new OverlayView(activity);
-            activity.addContentView(overlayView,new ViewGroup.LayoutParams(w,h));
             animationController = new AnimationController(bottomActionSheetView,actionButton,overlayView,h);
             actionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
