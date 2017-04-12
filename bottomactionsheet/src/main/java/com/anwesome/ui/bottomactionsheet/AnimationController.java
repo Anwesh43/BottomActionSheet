@@ -35,8 +35,8 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
             closeAnimator.setDuration(500);
             closeAnimator.addUpdateListener(this);
             closeAnimator.addListener(this);
-            dir = -1;
         }
+        dir = -1;
         closeAnimator.start();
     }
     public void onAnimationUpdate(ValueAnimator animator) {
@@ -51,7 +51,7 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
     }
     public void onAnimationEnd(Animator animator) {
         if(dir == 1) {
-
+            overlayView.setVisibility(View.VISIBLE);
         }
         else if(dir == -1) {
             overlayView.setVisibility(View.INVISIBLE);

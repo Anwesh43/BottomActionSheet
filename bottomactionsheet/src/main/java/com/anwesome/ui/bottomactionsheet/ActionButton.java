@@ -17,9 +17,10 @@ public class ActionButton extends View {
         super(context);
     }
     public void onDraw(Canvas canvas) {
-        int w = canvas.getWidth()/2;
+        int w = canvas.getWidth();
         paint.setColor(Color.parseColor("#009688"));
-        canvas.drawCircle(w,w,w,paint);
+        paint.setStrokeWidth(w/20);
+        canvas.drawCircle(w/2,w/2,w/2,paint);
         paint.setColor(Color.WHITE);
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setStrokeJoin(Paint.Join.ROUND);

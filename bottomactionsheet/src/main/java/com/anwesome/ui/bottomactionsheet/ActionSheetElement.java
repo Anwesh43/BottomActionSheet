@@ -25,16 +25,20 @@ public class ActionSheetElement {
     public void draw(Canvas canvas, Paint paint) {
         paint.setTextSize(h/3);
         canvas.save();
-        canvas.translate(x,y);
+        canvas.translate(x+w/2,y+h/2);
         paint.setColor(Color.WHITE);
         canvas.drawRect(new RectF(-w/2,-h/2,w/2,h/2),paint);
         canvas.save();
-        paint.setColor(Color.parseColor("#88FFFFFF"));
+        paint.setColor(Color.parseColor("#99E0E0E0"));
         canvas.scale(scale,scale);
         canvas.drawRect(new RectF(-w/2,-h/2,w/2,h/2),paint);
         canvas.restore();
         String optionStr = getAdjustedString(paint);
+        paint.setColor(Color.BLACK);
         canvas.drawText(optionStr,-paint.measureText(optionStr)/2,paint.getTextSize()/2,paint);
+        paint.setStrokeWidth(w/90);
+        canvas.drawLine(-w/2,h/2,w/2,h/2,paint);
+
         canvas.restore();
     }
     private String getAdjustedString(Paint paint) {
@@ -44,14 +48,14 @@ public class ActionSheetElement {
                 msg = msg+"...";
             }
             else {
-                msg += option.charAt(0);
+                msg += option.charAt(i);
             }
         }
         return msg;
     }
     public void update() {
-        scale+=dir*0.1f;
-        if(scale>=1) {
+        scale+=dir*0.2f;
+        if(scale>=1.2F) {
             dir = 0;
             scale = 0;
             if(onElementClickListener!=null) {

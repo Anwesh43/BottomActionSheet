@@ -64,6 +64,7 @@ public class BottomActionSheetView extends View {
                     elements.add(actionSheetElement);
                     if(!isAnimated) {
                         isAnimated = true;
+                        postInvalidate();
                     }
                     break;
                 }

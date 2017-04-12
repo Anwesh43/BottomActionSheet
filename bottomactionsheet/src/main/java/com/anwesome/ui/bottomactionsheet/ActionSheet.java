@@ -38,20 +38,22 @@ public class ActionSheet {
             Point size = new Point();
             display.getRealSize(size);
             w = size.x;
-            h= size.y;
-            int hBottom = (h/25)*elements.size();
+            h= size.y*9/10;
+            int hBottom = (h/12)*elements.size();
+            overlayView = new OverlayView(activity);
+            overlayView.setVisibility(View.INVISIBLE);
             activity.addContentView(overlayView,new ViewGroup.LayoutParams(w,h));
             bottomActionSheetView = new BottomActionSheetView(activity);
             bottomActionSheetView.setActionSheetElementList(elements);
-            bottomActionSheetView.setY(h-hBottom);
+            bottomActionSheetView.setY(h);
             bottomActionSheetView.setX(0);
             activity.addContentView(bottomActionSheetView,new ViewGroup.LayoutParams(w,hBottom));
             actionButton = new ActionButton(activity);
             actionButton.setX(w/2-w/20);
-            actionButton.setY(19*h/20-w/20);
+            actionButton.setY(9*h/10-w/20);
             activity.addContentView(actionButton,new ViewGroup.LayoutParams(w/10,w/10));
-            overlayView = new OverlayView(activity);
-            animationController = new AnimationController(bottomActionSheetView,actionButton,overlayView,h);
+
+            animationController = new AnimationController(bottomActionSheetView,actionButton,overlayView,19*h/20);
             actionButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
