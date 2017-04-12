@@ -2,6 +2,7 @@ package com.anwesome.ui.bottomactionsheet;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.view.View;
 
 /**
  * Created by anweshmishra on 12/04/17.
@@ -10,13 +11,15 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
     private BottomActionSheetView bottomActionSheetView;
     private ActionButton actionButton;
     private ValueAnimator openAnimator,closeAnimator;
-    private int dir = 0,h;
-    public AnimationController(BottomActionSheetView bottomActionSheetView,ActionButton actionButton,int h) {
+    private int dir = -1,h;
+    private OverlayView overlayView;
+    public AnimationController(BottomActionSheetView bottomActionSheetView,ActionButton actionButton,OverlayView overlayView,int h) {
         this.bottomActionSheetView  = bottomActionSheetView;
         this.actionButton = actionButton;
+        this.overlayView = overlayView;
         this.h = h;
     }
-    public void open() {
+    private void open() {
         if(openAnimator == null) {
             openAnimator = ValueAnimator.ofFloat(h, h - bottomActionSheetView.getMeasuredHeight());
             openAnimator.setDuration(500);
@@ -26,7 +29,7 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
         openAnimator.start();
         dir = 1;
     }
-    public void close() {
+    private void close() {
         if(closeAnimator == null) {
             closeAnimator = ValueAnimator.ofFloat( h - bottomActionSheetView.getMeasuredHeight(),h);
             closeAnimator.setDuration(500);
@@ -51,9 +54,8 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
 
         }
         else if(dir == -1) {
-
+            overlayView.setVisibility(View.INVISIBLE);
         }
-        dir = 0;
     }
     public void onAnimationCancel(Animator animator) {
 
@@ -63,5 +65,13 @@ public class AnimationController implements ValueAnimator.AnimatorUpdateListener
     }
     public void onAnimationStart(Animator animator) {
 
+    }
+    public void toggle() {
+        if(dir == 1) {
+            close();
+        }
+        else if(dir == -1) {
+            open();
+        }
     }
 }

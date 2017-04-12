@@ -11,6 +11,7 @@ import android.view.View;
  * Created by anweshmishra on 12/04/17.
  */
 public class ActionButton extends View {
+    private OnClickListener onClickListener;
     private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     public ActionButton(Context context) {
         super(context);
@@ -25,7 +26,13 @@ public class ActionButton extends View {
         canvas.drawLine(w/2,w/4,w/4,w/2,paint);
         canvas.drawLine(w/2,w/4,w/2+w/4,w/2,paint);
     }
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
     public boolean onTouchEvent(MotionEvent event) {
+        if(onClickListener!=null) {
+            onClickListener.onClick(this);
+        }
         return true;
     }
 }
